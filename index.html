@@ -1,0 +1,475 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Happy Birthday Kannayya 💕</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI';
+            background: url('images/love1.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .page {
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            display: none;
+            padding-top: 60px;
+        }
+
+        .active {
+            display: block;
+        }
+
+        button {
+            padding: 5px 12px; /* smaller padding */
+            font-size: 14px; /* smaller text */
+            border: none;
+            border-radius: 20px; /* slightly smaller curve */
+            margin: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .nextBtn {
+            background: #ff4e8b;
+            color: white;
+        }
+
+        .yesBtn {
+            background: #ff0066;
+            color: white;
+        }
+
+        .noBtn {
+            background: white;
+            color: red;
+            position: relative;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+        }
+
+        .glow {
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px pink;
+            }
+
+            to {
+                text-shadow: 0 0 30px red;
+            }
+        }
+
+        /* 🎁 Gift Page */
+        .giftBox {
+            font-size: 120px;
+            cursor: pointer;
+            animation: bounce 1.5s infinite;
+            transition: transform 0.6s ease;
+        }
+
+            .giftBox.open {
+                transform: scale(1.5) rotate(20deg);
+            }
+
+        .tapText {
+            margin-top: 20px;
+            font-size: 22px;
+            color: pink;
+        }
+
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        /* Hearts Rain */
+        .heart {
+            position: fixed;
+            top: -20px;
+            color: pink;
+            animation: fall linear forwards;
+            z-index: 9999;
+            pointer-events: none;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        /* Firework */
+        .firework {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: yellow;
+            border-radius: 50%;
+            animation: explode 1s ease-out forwards;
+        }
+
+        @keyframes explode {
+            to {
+                transform: translateY(-200px);
+                opacity: 0;
+            }
+        }
+
+        img {
+            border-radius: 20px;
+            box-shadow: 0 0 25px hotpink;
+            margin: 10px;
+        }
+
+        #messageBox {
+            font-size: 24px;
+            margin-top: 30px;
+            transition: opacity 0.8s;
+        }
+
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            background: white;
+            color: black;
+            padding: 25px;
+            border-radius: 15px;
+            display: none;
+            width: 500px;
+            box-shadow: 0 0 20px pink;
+        }
+        .imageLayout {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .sideImage {
+            display: flex;
+            align-items: center;
+        }
+
+        .verticalImages {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .mainImg {
+            height: 420px; /* control height */
+            width: auto; /* keep proportions */
+            border-radius: 20px;
+            box-shadow: 0 0 25px hotpink;
+            object-fit: cover;
+        }
+
+        .smallImg {
+            width: 260px; /* increase width */
+            height: 150px; /* increase height */
+            object-fit: cover; /* keeps image proper */
+            border-radius: 20px;
+            box-shadow: 0 0 20px hotpink;
+        }
+        .loveRain {
+            position: absolute;
+            width: 100%;
+            bottom: 20px;
+            font-size: 22px;
+            animation: floatText 6s linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes floatText {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-200px);
+                opacity: 0;
+            }
+        }
+        .signature {
+            width: 100%;
+            text-align: right !important;
+            margin-top: 25px;
+            font-size: 22px;
+            font-style: italic;
+            color: darkmagenta;
+            padding-right: 40px;
+            
+        }
+        .delayText {
+            margin-top: 120px;
+            font-size: 36px;
+            color: #fff;
+            text-shadow: 0 0 20px hotpink;
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .page {
+            position: relative; /* IMPORTANT for absolute button */
+        }
+
+        /* Right middle button style */
+        .sideBtn {
+            position: absolute;
+            right: 20px; /* move to right */
+            top: 50%; /* middle height */
+            transform: translateY(-50%);
+            padding: 8px 16px;
+            font-size: 14px;
+            border-radius: 20px;
+        }
+
+
+        
+    </style>
+</head>
+
+<body>
+
+    <audio id="bgMusic">
+        <source src="images/love2.mpeg" type="audio/mpeg">
+    </audio>
+
+    <!-- PAGE 1 🎁 -->
+    <div class="page active" id="page1">
+
+        <h1 class="delayText">Sorry for the delay nanna ☹️💕</h1>
+
+        <div class="giftBox" onclick="openGift()">
+            <img src="images/gift.jpg" width="150">
+        </div>
+
+        <h2 class="tapText">Click the Gift My Love 💕</h2>
+    </div>
+
+    <!-- PAGE 2 🎂 -->
+    <div class="page" id="page2">
+        <h1 class="glow">Happy Birthday My Dear Kannayya 🎂💕</h1>
+        <img src="images/A1.jpeg" width="250">
+        <img src="images/A5.jpeg" width="250">
+        <img src="images/A2.jpeg" width="250">
+        <p>You are my world, my forever, my everything 💖</p>
+        <button class="sideBtn" onclick="go(3)">Next 💌</button>
+    </div>
+
+    <!-- PAGE 3 💌 -->
+    <div class="page" id="page3">
+        <h1 class="glow">Have you missed my letter? 💕</h1>
+
+        <p style="font-size:22px; margin-top:30px;">
+            Just take my letter 💌 <br>
+            Click on the below button to get my message 💖
+        </p>
+
+        <button class="nextBtn" onclick="openLetterPage()">
+            Take My Letter 💌
+        </button>
+    </div>
+
+
+    <!-- PAGE 4 💍 -->
+    <div class="page" id="page4">
+        <h1>Will You Be My Valentine Forever? 💍💕</h1>
+        <img src="images/g3.jpeg" width="250"><br />
+        <button class="yesBtn" onclick="go(5)">Yes 💖</button>
+        <button class="noBtn" id="noBtn" onmouseover="moveNo()">No 😜</button>
+        <div id="messageBox"></div>
+    </div>
+
+
+
+    <!-- PAGE 5 -->
+    <div class="page" id="page5">
+        <h1 class="glow">Thank You My Dear Kannayya 💕</h1>
+        <div class="imageLayout">
+
+            <!-- Left Side Single Image -->
+            <div class="sideImage">
+                <img src="images/AP9.jpeg" class="mainImg">
+            </div>
+
+            <!-- Right Side Top & Bottom Images -->
+            <div class="verticalImages">
+                <img src="images/AP8.jpeg" class="smallImg" height="150">
+                <img src="images/AP7.jpeg" class="smallImg" height="150">
+            </div>
+        </div>
+        <p>
+            😍Let enjoy all the moments in our life💞<br />
+            🎁🚲Let’s ride our life together forever❤️
+        </p>
+        <button class="sideBtn" onclick="go(6)">Move Forward 🎆</button>
+    </div>
+    <!-- PAGE 5 🎉 -->
+    <div class="page" id="page6">
+        <h1 class="glow">Once Again Happy Birthday My Love 🎂💕</h1>
+        <img src="images/A6.jpeg" width="250">
+        <div class="loveRain">
+            I Love You Kannayya 💕
+        </div>
+
+    </div>
+
+    <!-- LOVE LETTER -->
+    <div class="popup" id="loveLetter">
+        <h3>💌 My Love Letter</h3>
+        <p>
+            My Dear Mental Moguda❤️, I am so happy and also very lucky that you have came into my life.
+            It's been 4 years that we are together, we had a lot of memories in these 4 years. I wish that we want to
+            continue our relation till to the end of our lives. We have a lot of fights but we can't leave without eachother,
+            but if we remember those fights now, it will be funny to us 😊🤭. Whatever happens i will be there with you nanna,
+            for lifetime 🤗. I will be your supporter always whenever you want whatever you want. You have to celebrate your all birthdays with
+            full of happiness😊. You also very lucky ra nanna...that i have came into your life like one unique mental piece 😜💕.
+            Thanks for coming into my life nanna...Ypu make my life so beautiful. I wanna live with you forever endever nanna.
+            And one thing mental no matter how many births i have for every rebirth you only want to be my husband💞🫂.
+            I think we have done with writing the love letters after a long back this letter came near to you to make your day 
+            so special 💖✨. Chorrryyyy for the delay message nanna..Ummmaahhhhhhhhhh😘😘😘<b>
+                Wish you many more happy' returns
+                of the day Kannayya 😘💞
+            </b> and <b>I Love you choo choo choooo much ra nannaluuuuuu 😘🫂.</b>
+        </p>
+
+        <div class="signature">
+            Your's Senior 💕<br>
+            Praveena 🤗
+        </div>
+        <button class="nextBtn" onclick="closePopup()">Close</button>
+    </div>
+
+    <script>
+        //function finalPage() {
+        //    go(4);
+        //    createFirework();
+        //}
+        function go(p) {
+            document.querySelectorAll(".page").forEach(x => x.classList.remove("active"));
+            document.getElementById("page" + p).classList.add("active");
+        }
+
+        function openGift() {
+            let gift = document.querySelector(".giftBox");
+            gift.classList.add("open");
+
+            setTimeout(() => {
+                go(2);
+            }, 800);
+        }
+
+        let msgs = [
+            "You can't say No 😘",
+            "Please be with me forever 💕",
+            "You are my happiness nanna 🌙",
+            "My life is beautiful because of you ❤️",
+            "Stuck with me forever 😜",
+            "I love you endlessly mental 💖",
+            "Please click on YES ra Yedava 💍",
+            "This is my last warning nanna ushhh.... 😑"
+        ];
+
+        let i = 0;
+
+        function moveNo() {
+            let btn = document.getElementById("noBtn");
+            btn.style.position = "absolute";
+            btn.style.left = Math.random() * 80 + "%";
+            btn.style.top = Math.random() * 80 + "%";
+
+            if (i < msgs.length) {
+                let box = document.getElementById("messageBox");
+                box.innerText = msgs[i];
+                i++;
+            } else {
+                btn.style.display = "none";
+            }
+        }
+
+        function openLetterPage() {
+            document.getElementById("loveLetter").style.display = "block";
+        }
+        function closePopup() {
+            document.getElementById("loveLetter").style.display = "none";
+            go(4);   
+        }
+
+        function createFirework() {
+            for (let j = 0; j < 25; j++) {
+                let fw = document.createElement("div");
+                fw.className = "firework";
+                fw.style.left = Math.random() * 100 + "%";
+                fw.style.top = "80%";
+                document.body.appendChild(fw);
+                setTimeout(() => fw.remove(), 1000);
+            }
+        }
+
+        /* Heart Rain */
+        setInterval(() => {
+            let heart = document.createElement("div");
+            heart.className = "heart";
+            let hearts = ["💖", "💘", "💕", "💞", "💓"];
+            heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+            heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 6000);
+        }, 250);
+
+        /* Music Auto Play + Repeat 2 Times */
+        let music = document.getElementById("bgMusic");
+        let playCount = 0;
+
+        window.addEventListener("click", function () {
+            music.play();
+        }, { once: true });
+
+        music.addEventListener("ended", function () {
+            playCount++;
+            if (playCount < 3) {
+                music.currentTime = 0;
+                music.play();
+            }
+        });
+    </script>
+
+</body>
+</html>
